@@ -3,24 +3,24 @@ import { shallow } from 'enzyme';
 
 import Form from '../components/Form';
 
-describe('Form', () => {
+describe("Form", () => {
   const handleChange = jest.fn();
   const handleSubmit = jest.fn();
   const wrapper = shallow(
     <Form
-      weight='90'
-      height='190'
+      weight="90"
+      height="190"
       onChangeHandler={handleChange}
-      onChangeHandler={handleSubmit}
+      onSubmitHandler={handleSubmit}
     />
   );
 
-  it('renders with weight prop', () => {
-    expect(wrapper.find('#weight').props().toEqual('90'));
+  it("renders with weight prop", () => {
+    expect(wrapper.find("#weight").props().value).toEqual("90");
   });
 
-  it('render with height prop'() => {
-    expect(wrapper.find('#height').prop().value).toEqual('190');
+  it("renders with height prop", () => {
+    expect(wrapper.find("#height").props().value).toEqual("190");
   });
 
   it("on change the onChangeHandler is being called", () => {
@@ -30,9 +30,8 @@ describe('Form', () => {
     expect(handleChange).toHaveBeenCalled();
   });
 
-it('on submit the onSubmitHandler is being called', () => {
-  wrapper.find('form').simulate('submit');
-  expect(handleSubmit).toHaveBeenCalled();
+  it("on submit the onSubmitHandler is being called", () => {
+    wrapper.find("form").simulate("submit");
+    expect(handleSubmit).toHaveBeenCalled();
   });
-
 });
